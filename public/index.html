@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="file.js"></script>
+</head>
+<body>
+<h1>HTML5 file API + ajax file upload sample</h1>
+<h2>drag & drop area</h2>
+<form>
+  <div
+        style="width: 500px; height: 100px; border: 1px solid gray;"
+        ondragover="onFileOver(event)"
+        ondrop="onFileDrop(event)">
+    drag & drop here
+  </div>
+</form>
+<h2>image preview area</h2>
+<div id="preview"></div>
+<h2>ajax request response area</h2>
+<div id="response"></div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+HTML5 file API + ajax file upload sample
+
+This is HTML5 file API + ajax file upload sample.
+
+requires: Perl, Plack, JSON, Digest::SHA1, and Firefox 3.6.x or later.
+
+How to run demo
+
+1. git clone this repository
+2. open Terminal.app and cd /path/to/git_clone_dir
+3. $ plackup
+4. open http://localhost:5000/public/index.html by Firefox
+5. drag and drop me.jpg to box
+
+When you dropped file, you can see dropped file in preview area, and file data will upload to server.
+
+Thanks to:
+http://ayuta.co.jp/html5-samples/ - very good HTML5 API sample codes. almost of this sample is copied from this page.
+http://mattn.kaoriya.net/software/lang/javascript/20090223173609.htm - had me notice xhr.sendAsBinary.
+http://blog.timc.idv.tw/posts/html5-file-api-xmlhttprequest-swfupload-now-what/ - showed me nice way to wrap jQuery.ajax using xhr.sendAsBinary.
