@@ -38,7 +38,7 @@ function upload(e){
         var reader = new FileReader();
         reader.onload = function(event){
             $.ajax({
-                url : 'http://localhost:5000/upload',
+                url : '/upload',
                 type : 'post',
                 data : reader.result,
                 dataType : 'json',
