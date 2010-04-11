@@ -46,6 +46,7 @@ function upload(e){
                     $.each(data, function(index,elem){
                         $('<pre>').text(elem).appendTo('#response');
                     });
+                    $('#indexes').show();
                 }
             });
         };
