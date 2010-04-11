@@ -43,13 +43,23 @@ function upload(e){
                 data : reader.result,
                 dataType : 'json',
                 success : function(data){
+                    var r = /saved as (.*)$/;
                     $.each(data, function(index,elem){
-                        $('<pre>').text(elem).appendTo('#response');
+                        if (r.exec(elem)) {
+                            var m = RegExp.$1;
+                            $('<a>').attr('href', '/' + m).text(m).wrap('<p>').appendTo('#response');
+                        } else {
+                            $('<p>').text(elem).appendTo('#response');
+                        }
                     });
-                    $('#indexes').show();
+                    $('.indexes').show();
                 }
             });
         };
         reader.readAsBinaryString(file);
     }
 }
+
+$(document).ready(function(){
+    $('.indexes').hide();
+});
