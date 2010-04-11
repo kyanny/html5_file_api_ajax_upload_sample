@@ -4,8 +4,7 @@ use Plack::Request;
 use Plack::Response;
 use Plack::Builder;
 use File::Basename;
-use File::Path;
-use File::Spec;
+use Path::Class;
 use JSON;
 
 my $root_handler = sub {
@@ -35,11 +34,10 @@ my $upload_handler = sub {
     }
     my $size = length $body;
 
-    my $tmp = mkpath('public/tmp');
-    my $tmp = File::Spec->catdir('public', 'tmp');
-    mkpath($tmp) unless -d $tmp;
+    my $dir = dir('public', 'tmp');
+    $dir->mkpath unless -d $dir;
 
-    my $filename = File::Spec->catdir($tmp, time().'.jpg');
+    my $filename = file($dir, time().'.jpg');
     open my $fh, ">", $filename or die $!;
     print $fh $body;
     close $fh or die $!;
