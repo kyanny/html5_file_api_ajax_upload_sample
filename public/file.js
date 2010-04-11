@@ -43,9 +43,8 @@ function upload(e){
                 data : reader.result,
                 dataType : 'json',
                 success : function(data){
-                    var r = /saved as (.*)$/;
                     $.each(data, function(index,elem){
-                        if (r.exec(elem)) {
+                        if (elem.match(/saved as (.*)$/)) {
                             var m = RegExp.$1;
                             $('<a>').attr('href', '/' + m).text(m).wrap('<p>').appendTo('#response');
                         } else {
