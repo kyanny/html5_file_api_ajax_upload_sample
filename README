@@ -2,7 +2,7 @@ HTML5 file API + ajax file upload sample
 
 This is HTML5 file API + ajax file upload sample.
 
-requires: Perl, Plack, JSON, Digest::SHA1, and Firefox 3.6.x or later.
+requires: Perl, Plack, JSON, Pass::Class, and Firefox 3.6.x or later.
 
 How to run demo
 
