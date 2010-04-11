@@ -7,7 +7,6 @@ use File::Basename;
 use File::Path;
 use File::Spec;
 use JSON;
-use Digest::SHA1 qw(sha1_hex);
 
 my $root_handler = sub {
     my $req = shift;
@@ -40,7 +39,7 @@ my $upload_handler = sub {
     my $tmp = File::Spec->catdir('public', 'tmp');
     mkpath($tmp) unless -d $tmp;
 
-    my $filename = File::Spec->catdir($tmp, sha1_hex($body).'.jpg');
+    my $filename = File::Spec->catdir($tmp, time().'.jpg');
     open my $fh, ">", $filename or die $!;
     print $fh $body;
     close $fh or die $!;
