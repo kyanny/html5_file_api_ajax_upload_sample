@@ -49,6 +49,35 @@ my $upload_handler = sub {
     return $res;
 };
 
+my $indexes_handler = sub {
+    my $req = shift;
+    my $res = $req->new_response(200);
+
+    my $dir = dir('public', 'tmp');
+    my $body;
+    while (my $file = $dir->next) {
+        next if $file->is_dir;
+        $body .= qq{<p><a href="$file">$file</a></p>};
+    }
+
+    $res->content_type('text/html');
+    $res->body(<<HTML);
+<html>
+<head>
+<title>Index of</title>
+</head>
+<body>
+<pre>
+$body
+</pre>
+</body>
+</html>
+HTML
+
+    return $res;
+
+};
+
 my $handler = sub {
     my $env = shift;
     my $req = Plack::Request->new($env);
@@ -59,6 +88,9 @@ my $handler = sub {
     }
     elsif ($req->path eq '/upload') {
         $res = $upload_handler->($req);
+    }
+    elsif ($req->path eq '/indexes') {
+        $res = $indexes_handler->($req);
     }
 
     $res->finalize;
